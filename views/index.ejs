@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Members Only</title>
+  <link rel="stylesheet" href="/stylesheets/style.css" type="text/css" />
+</head>
+
+<body>
+  <nav class="navbar">
+    <div class="nav-left">
+      <h1 class="header">Members only</h1>
+      <h2 class="subheader">When you log in something happens</h2>
+    </div>
+    <div class="nav-right">
+      <% if (user) {%>
+        <a href="/new-post"><button>NEW POST</button></a>
+        <a href="/log-out"><button>LOG OUT</button></a>
+        <% } else { %>
+          <a href="/log-in"><button>LOG IN</button></a>
+          <a href="/sign-up"><button>SIGN UP</button></a>
+          <% } %>
+    </div>
+  </nav>
+  <div class="posts">
+    <% posts.forEach((post)=> { %>
+      <div class="single-post">
+        <h4 class="post-title">
+          <%= post.messageTitle %>
+        </h4>
+        <p class="post-message">
+          <%= post.messageContent %>
+        </p>
+        <div class="post-info">
+          <% if (user) {%>
+            <p class="post-user">User: <%= post.user.username %>
+            </p>
+            <% } %>
+              <p class="post-date">
+                Posted At: <%= post.createdAt.toUTCString() %>
+              </p>
+        </div>
+        <% if (admin) {%>
+          <form action="/delete-post" method="POST">
+            <input type="hidden" name="postid" required="true" value=<%=post._id %> />
+            <button class="delete-post">Delete Post</button>
+          </form>
+          <% } %>
+      </div>
+      <% }) %>
+  </div>
+</body>
+
+</html>

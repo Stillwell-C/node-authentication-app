@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Members Only</title>
+    <link rel="stylesheet" href="/stylesheets/style.css" type="text/css" />
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="nav-left">
+        <h1 class="header">Members only</h1>
+        <h2 class="subheader">When you log in something happens</h2>
+      </div>
+      <div class="nav-right">
+        <a href="/"><button>HOME</button></a>
+        <a href="/sign-up"><button>SIGN UP</button></a>
+      </div>
+    </nav>
+    <h3>Log in</h3>
+    <form action="/log-in" method="POST" class="input-form">
+      <div class="form-line">
+      <label for="username">Username</label>
+      <input name="username" placeholder="username" type="text" />
+    </div>
+    <div class="form-line">
+      <label for="password">Password</label>
+      <input name="password" type="password" />
+    </div>
+      <button type="submit">Log In</button>
+    </form>
+  </body>
+</html>
